@@ -6,7 +6,7 @@ import ru.dmitrii_egorov.model.Resume;
 public class SortedArrayStorage extends AbstractArrayStorage {
 
   @Override
-  protected int indexOf(String uuid) {
+  protected Integer getSearchKey(String uuid) {
     final var serchKey = new Resume(uuid);
     return Arrays.binarySearch(storage, 0, count, serchKey);
   }

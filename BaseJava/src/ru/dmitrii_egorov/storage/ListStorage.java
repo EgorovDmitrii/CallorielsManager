@@ -4,13 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import ru.dmitrii_egorov.model.Resume;
 
-public class ListStorage extends AbstractStorage {
+public class ListStorage extends AbstractStorage<Integer> {
 
   protected List<Resume> storage = new ArrayList<>();
 
   @Override
-  protected int indexOf(String uuid) {
+  protected boolean isExist(Integer index) {
+    return index >= 0;
+  }
+
+  @Override
+  protected Integer getSearchKey(String uuid) {
     for (int i = 0; i < storage.size(); i++) {
+
       if (storage.get(i).uuid.equals(uuid)) {
         return i;
       }
@@ -20,23 +26,23 @@ public class ListStorage extends AbstractStorage {
 
 
   @Override
-  protected void doSave(Resume resume, int index) {
+  protected void doSave(Resume resume, Integer index) {
     storage.add(resume);
   }
 
   @Override
-  protected Resume doGet(int index) {
+  protected Resume doGet(Integer index) {
     return storage.get(index);
   }
 
   @Override
-  protected void doUpdate(Resume resume, int index) {
+  protected void doUpdate(Resume resume, Integer index) {
     storage.set(index, resume);
   }
 
   @Override
-  protected void doDelete(int index) {
-    storage.remove(index);
+  protected void doDelete(Integer index) {
+    storage.remove(index.intValue());
   }
 
   @Override

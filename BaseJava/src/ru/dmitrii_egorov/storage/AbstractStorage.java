@@ -4,33 +4,37 @@ import ru.dmitrii_egorov.exeption.ExistStorageExeption;
 import ru.dmitrii_egorov.exeption.NotExistStorageExeption;
 import ru.dmitrii_egorov.model.Resume;
 
-public abstract class AbstractStorage implements Storage {
+public abstract class AbstractStorage <SK> implements Storage {
 
-  protected abstract int indexOf(final String uuid);
+  protected abstract boolean isExist(final SK index);
 
-  protected abstract void doSave(final Resume resume, final int index);
+  protected abstract SK getSearchKey(final String uuid);
 
-  protected abstract Resume doGet(final int index);
+  protected abstract void doSave(final Resume resume, final SK index);
 
-  protected abstract void doUpdate(final Resume resume, final int index);
+  protected abstract Resume doGet(final SK index);
 
-  protected abstract void doDelete(final int index);
+  protected abstract void doUpdate(final Resume resume, final SK index);
+
+  protected abstract void doDelete(final SK index);
 
   @Override
   public void save(Resume resume) {
-    final var index = indexOf(resume.uuid);
-    if (index >= 0) {
+    final var index = getSearchKey(resume.uuid);
+
+    if (isExist(index)) {
       throw new ExistStorageExeption(resume.uuid);
     } else {
       doSave(resume, index);
     }
-
   }
+
 
   @Override
   public Resume get(String uuid) {
-    final var index = indexOf(uuid);
-    if (index < 0) {
+    final var index = getSearchKey(uuid);
+
+    if (!isExist(index)) {
       throw new NotExistStorageExeption(uuid);
     } else {
       return doGet(index);
@@ -40,24 +44,24 @@ public abstract class AbstractStorage implements Storage {
 
   @Override
   public void update(Resume resume) {
-    final var index = indexOf(resume.getUuid());
+    final var index = getSearchKey(resume.getUuid());
 
-    if (index < 0) {
+    if (!isExist(index)) {
       throw new NotExistStorageExeption(resume.uuid);
     } else {
       doUpdate(resume, index);
     }
   }
 
+
   @Override
   public void delete(String uuid) {
-    final var index = indexOf(uuid);
+    final var index = getSearchKey(uuid);
 
-    if (index < 0) {
+    if (!isExist(index)) {
       throw new NotExistStorageExeption(uuid);
     } else {
       doDelete(index);
     }
-
   }
 }

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import ru.dmitrii_egorov.model.Resume;
+import ru.dmitrii_egorov.storage.AbstractArrayStorage;
 import ru.dmitrii_egorov.storage.ArrayStorege;
 import ru.dmitrii_egorov.storage.ListStorage;
 import ru.dmitrii_egorov.storage.SortedArrayStorage;
@@ -11,7 +12,19 @@ import ru.dmitrii_egorov.storage.Storage;
 
 public class MainTestArrayge {
 
-  private final static Storage ARRAY_STOREGE = new SortedArrayStorage();
+  private final static Storage ARRAY_STOREGE = new SortedArrayStorage() {
+
+
+    @Override
+    protected void insertElement(Resume resume, int index) {
+
+    }
+
+    @Override
+    protected void deleteResume(int index) {
+
+    }
+  };
 
   public static void main(String[] args) throws IOException {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
