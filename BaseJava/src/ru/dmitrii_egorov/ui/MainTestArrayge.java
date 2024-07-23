@@ -32,17 +32,17 @@ public class MainTestArrayge {
 
     while (true) {
       System.out.print(
-          "Ввведите одну из команд: {list | size | save uuid | delete uuid | get uuid | clear | exit}: ");
+          "Ввведите одну из команд: {list | size | save param | delete param | get param | clear | exit}: ");
       String[] params = reader.readLine().trim().toLowerCase().split(" ");
 
-      if (params.length < 1 || params.length > 2) {
+      if (params.length < 1 || params.length > 3) {
         System.out.println("Неверная команда");
         continue;
       }
 
-      String uuid = null;
-      if (params.length == 2) {
-        uuid = params[1].intern();
+      String param = null;
+      if (params.length > 1) {
+        param = params[1].intern();
       }
 
       switch (params[0]) {
@@ -53,20 +53,16 @@ public class MainTestArrayge {
           System.out.println(ARRAY_STOREGE.size());
           break;
         case "save":
-          if (uuid == null) {
-            resume = new Resume();
-          } else {
-            resume = new Resume(uuid);
-          }
+          resume = new Resume(param);
           ARRAY_STOREGE.save(resume);
           printAll();
           break;
         case "delete":
-          ARRAY_STOREGE.delete(uuid);
+          ARRAY_STOREGE.delete(param);
           printAll();
           break;
         case "get":
-          System.out.println(ARRAY_STOREGE.get(uuid));
+          System.out.println(ARRAY_STOREGE.get(param));
           break;
         case "clear":
           ARRAY_STOREGE.clear();

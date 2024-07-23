@@ -20,10 +20,10 @@ public abstract class AbstractStorage <SK> implements Storage {
 
   @Override
   public void save(Resume resume) {
-    final var index = getSearchKey(resume.uuid);
+    final var index = getSearchKey(resume.getUuid());
 
     if (isExist(index)) {
-      throw new ExistStorageExeption(resume.uuid);
+      throw new ExistStorageExeption(resume.getUuid());
     } else {
       doSave(resume, index);
     }
@@ -47,7 +47,7 @@ public abstract class AbstractStorage <SK> implements Storage {
     final var index = getSearchKey(resume.getUuid());
 
     if (!isExist(index)) {
-      throw new NotExistStorageExeption(resume.uuid);
+      throw new NotExistStorageExeption(resume.getUuid());
     } else {
       doUpdate(resume, index);
     }

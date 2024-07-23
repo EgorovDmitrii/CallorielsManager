@@ -26,7 +26,7 @@ public abstract class AbstractArrayStorage extends AbstractStorage <Integer> {
   @Override
   protected void doSave(Resume resume, Integer index) {
     if (count == STORAGE_LIMIT) {
-      throw new StorageExeption("Хранилище с резюме переполнено", resume.uuid);
+      throw new StorageExeption("Хранилище с резюме переполнено", resume.getUuid());
     } else {
       insertElement(resume, index);
       count++;

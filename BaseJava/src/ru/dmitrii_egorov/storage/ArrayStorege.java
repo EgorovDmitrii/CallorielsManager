@@ -6,7 +6,7 @@ import ru.dmitrii_egorov.model.Resume;
 public class ArrayStorege extends AbstractArrayStorage {
   protected Integer getSearchKey(final String uuid) {
     for (int i = 0; i < count; i++) {
-      if (storage[i].uuid.equals(uuid)) {
+      if (storage[i].getUuid().equals(uuid)) {
         return i;
       }
     }

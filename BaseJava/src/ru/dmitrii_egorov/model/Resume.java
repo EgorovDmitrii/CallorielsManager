@@ -1,9 +1,11 @@
 package ru.dmitrii_egorov.model;
 
+import java.time.Month;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
+import ru.dmitrii_egorov.model.Organization.JobTitle;
 
 public class Resume implements Comparable<Resume>{
 
@@ -43,7 +45,7 @@ public class Resume implements Comparable<Resume>{
 
   @Override
   public String toString() {
-    return "Resume{uuid='%s', fullName='%s', contacts=%s, sections=%s}"
+    return "Resume{\n\tuuid='%s', \n\tfullName='%s', \n\tcontacts=%s, \n\tsections=%s\n}"
         .formatted(uuid, fullName, contacts, sections);
   }
 
@@ -75,4 +77,19 @@ public class Resume implements Comparable<Resume>{
   public int compareTo(Resume o) {
     return this.uuid.compareTo(o.uuid);
   }
+
+  public static void main(String[] args) {
+    Resume resume = new Resume("Дмитрий");
+    resume.addContact(ContactType.SKYPE, "Zerocoloring");
+    resume.addContact(ContactType.MOBILE, "+925 111111111");
+    resume.addSection(SectionType.QUALIFICATION, new ListSection("Java", "SQL", "Collection", "Git"));
+
+    resume.addSection(SectionType.EXPERIANCE,
+        new OrganizationSection(
+            new Organization("Гулливер", "https://luxkod.ru",
+                new JobTitle(2023, Month.JANUARY, 2023, Month.MAY, "Директор", "Описание" ))));
+    System.out.println(resume);
+  }
 }
+
+

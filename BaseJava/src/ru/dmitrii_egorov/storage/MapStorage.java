@@ -17,7 +17,7 @@ private final Map<String, Resume> storage = new HashMap<>();
   protected String getSearchKey(String uuid) {
     for (Entry<String, Resume> entry : storage.entrySet()) {
 
-      if (entry.getValue().uuid.equals(uuid)) {
+      if (entry.getValue().getUuid().equals(uuid)) {
         return entry.getKey();
       }
     }
