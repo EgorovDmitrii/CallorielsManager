@@ -1,2 +1,0 @@
-# BaseJava
-# CallorielsManager
