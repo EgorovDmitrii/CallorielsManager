@@ -17,11 +17,9 @@
 
 <main>
    <section>
-<%--       <jsp:useBean id="meal" type="ru.dmitrii_egorov.manager.model.MealTo"/>--%>
+       <jsp:useBean id="meal" type="ru.dmitrii_egorov.manager.model.Meal" scope="request"/>
 
        <form method="post" action="meals">
-           <input type="hidden" name="id" value="${meal.id}">
-           <h3><a href="${pageContext.request.contextPath}/index.html">Home</a></h3>
            <input type="hidden" name="id" value="${meal.id}">
            <div class="form-group">
                <label for="dateTime">DateTime:</label>

@@ -36,18 +36,19 @@ public class MealServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-
+        String idStr = req.getParameter("id");
 
         Meal meal = new Meal(
+                idStr.isEmpty() ? null : Integer.parseInt(idStr),
                 LocalDateTime.parse(req.getParameter("dateTime")),
                 req.getParameter("description"),
                 Integer.parseInt(req.getParameter("calories"))
         );
 
-        if (StringUtils.hasLength(req.getParameter("id"))) {
-            mealService.update(meal, SecurityUtil.authUserID());
-        } else {
+        if (meal.isNew()) {
             mealService.create(meal, SecurityUtil.authUserID());
+        } else {
+            mealService.update(meal, SecurityUtil.authUserID());
         }
         resp.sendRedirect("meals");
     }
