@@ -1,5 +1,7 @@
 package ru.dmitrii_egorov.manager.repository.jdbc;
 
+import org.springframework.dao.support.DataAccessUtils;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -11,6 +13,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class JDBCMealRepository implements MealRepository {
+
+    private static final BeanPropertyRowMapper<Meal> ROW_MAPPER = new BeanPropertyRowMapper<>(Meal.class);
 
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -41,7 +45,7 @@ public class JDBCMealRepository implements MealRepository {
             if (namedParameterJdbcTemplate.update("""
                     UPDATE meal
                     SET description=:description, calories =: calories, date_time=: dateTime
-                    WHERE id=:id AND userId=:userId
+                    WHERE id=:id AND meal.user_id=:userId
                     """, params) == 0) {
                 return null;
             }
@@ -51,21 +55,22 @@ public class JDBCMealRepository implements MealRepository {
 
     @Override
     public Meal get(int id, int userId) {
-        return null;
+        List<Meal> meals = jdbcTemplate.query("SELECT * FROM meal WHERE id = ? AND user_id = ?", ROW_MAPPER, id, userId);
+        return DataAccessUtils.singleResult(meals);
     }
 
     @Override
     public boolean delete(int id, int userId) {
-        return false;
+        return jdbcTemplate.update("DELETE FROM meal WHERE id = ? AND user_id = ?", id, userId) != 0;
     }
 
     @Override
     public List<Meal> getAll(int userId) {
-        return List.of();
+        return jdbcTemplate.query("SELECT * FROM meal WHERE user_id = ?", ROW_MAPPER, userId);
     }
 
     @Override
     public List<Meal> getBetweenHalfOpen(LocalDateTime startDate, LocalDateTime endDate, int userId) {
-        return List.of();
+        return jdbcTemplate.query("SELECT * FROM meal WHERE user_id = ? AND date_time >= ? AND date_time < ?", ROW_MAPPER, userId, startDate, endDate);
     }
 }
