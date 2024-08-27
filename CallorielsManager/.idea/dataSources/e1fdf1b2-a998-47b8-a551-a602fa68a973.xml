@@ -3,9 +3,9 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>dmy</DateStyle>
-      <IntrospectionStateNumber>749</IntrospectionStateNumber>
+      <IntrospectionStateNumber>764</IntrospectionStateNumber>
       <ServerVersion>15.8</ServerVersion>
-      <StartupTime>1723627703</StartupTime>
+      <StartupTime>1724659107</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -800,7 +800,7 @@ false Zulu
 13183||10|C|G
 13183||-9223372036854775808|U|G
 13183||10|U|G</Grants>
-      <IntrospectionStateNumber>749</IntrospectionStateNumber>
+      <IntrospectionStateNumber>764</IntrospectionStateNumber>
       <ObjectId>16398</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4218,8 +4218,8 @@ false Zulu
     <schema id="262" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>749</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-08-14.16:06:15</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>764</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-08-27.16:16:48</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>518</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -4228,25 +4228,25 @@ false Zulu
       <ObjectId>16399</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>100000</StartValue>
-      <StateNumber>741</StateNumber>
+      <StateNumber>762</StateNumber>
       <StoredType>bigint|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <table id="264" parent="262" name="meal">
-      <ObjectId>16424</ObjectId>
-      <StateNumber>745</StateNumber>
+      <ObjectId>16462</ObjectId>
+      <StateNumber>759</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="265" parent="262" name="user_role">
-      <ObjectId>16412</ObjectId>
-      <StateNumber>744</StateNumber>
+      <ObjectId>16450</ObjectId>
+      <StateNumber>758</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="266" parent="262" name="users">
-      <ObjectId>16400</ObjectId>
-      <StateNumber>744</StateNumber>
+      <ObjectId>16438</ObjectId>
+      <StateNumber>758</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
@@ -4254,99 +4254,99 @@ false Zulu
       <DefaultExpression>nextval(&apos;global_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>745</StateNumber>
+      <StateNumber>759</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
     <column id="268" parent="264" name="user_id">
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>745</StateNumber>
+      <StateNumber>759</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
     <column id="269" parent="264" name="date_time">
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>745</StateNumber>
+      <StateNumber>759</StateNumber>
       <StoredType>timestamp|0s</StoredType>
       <TypeId>1114</TypeId>
     </column>
     <column id="270" parent="264" name="description">
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>745</StateNumber>
+      <StateNumber>759</StateNumber>
       <StoredType>text|0s</StoredType>
       <TypeId>25</TypeId>
     </column>
     <column id="271" parent="264" name="calories">
       <NotNull>1</NotNull>
       <Position>5</Position>
-      <StateNumber>745</StateNumber>
+      <StateNumber>759</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
     <foreign-key id="272" parent="264" name="meal_user_id_fkey">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16432</ObjectId>
+      <ObjectId>16470</ObjectId>
       <OnDelete>cascade</OnDelete>
-      <StateNumber>745</StateNumber>
+      <StateNumber>759</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16400</RefTableId>
+      <RefTableId>16438</RefTableId>
     </foreign-key>
     <index id="273" parent="264" name="meal_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16430</ObjectId>
+      <ObjectId>16468</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>745</StateNumber>
+      <StateNumber>759</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <index id="274" parent="264" name="meal_unique_user_datetime_idx">
       <ColNames>user_id
 date_time</ColNames>
-      <ObjectId>16437</ObjectId>
-      <StateNumber>746</StateNumber>
+      <ObjectId>16475</ObjectId>
+      <StateNumber>760</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="275" parent="264" name="meal_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16431</ObjectId>
+      <ObjectId>16469</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>745</StateNumber>
-      <UnderlyingIndexId>16430</UnderlyingIndexId>
+      <StateNumber>759</StateNumber>
+      <UnderlyingIndexId>16468</UnderlyingIndexId>
     </key>
     <column id="276" parent="265" name="user_id">
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>744</StateNumber>
+      <StateNumber>758</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
     <column id="277" parent="265" name="role">
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>744</StateNumber>
+      <StateNumber>758</StateNumber>
       <StoredType>varchar|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
     <foreign-key id="278" parent="265" name="user_role_user_id_fkey">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16419</ObjectId>
+      <ObjectId>16457</ObjectId>
       <OnDelete>cascade</OnDelete>
-      <StateNumber>744</StateNumber>
+      <StateNumber>758</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16400</RefTableId>
+      <RefTableId>16438</RefTableId>
     </foreign-key>
     <index id="279" parent="265" name="user_roles_idx">
       <ColNames>user_id
 role</ColNames>
-      <ObjectId>16417</ObjectId>
-      <StateNumber>744</StateNumber>
+      <ObjectId>16455</ObjectId>
+      <StateNumber>758</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationIds>
@@ -4357,36 +4357,36 @@ pg_catalog</CollationParentNames>
 default</CollationNames>
     </index>
     <key id="280" parent="265" name="user_roles_idx">
-      <ObjectId>16418</ObjectId>
-      <StateNumber>744</StateNumber>
-      <UnderlyingIndexId>16417</UnderlyingIndexId>
+      <ObjectId>16456</ObjectId>
+      <StateNumber>758</StateNumber>
+      <UnderlyingIndexId>16455</UnderlyingIndexId>
     </key>
     <column id="281" parent="266" name="id">
       <DefaultExpression>nextval(&apos;global_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>742</StateNumber>
+      <StateNumber>756</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
     <column id="282" parent="266" name="name">
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>742</StateNumber>
+      <StateNumber>756</StateNumber>
       <StoredType>varchar|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
     <column id="283" parent="266" name="email">
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>742</StateNumber>
+      <StateNumber>756</StateNumber>
       <StoredType>varchar|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
     <column id="284" parent="266" name="password">
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>742</StateNumber>
+      <StateNumber>756</StateNumber>
       <StoredType>varchar|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
@@ -4394,7 +4394,7 @@ default</CollationNames>
       <DefaultExpression>now()</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>5</Position>
-      <StateNumber>742</StateNumber>
+      <StateNumber>756</StateNumber>
       <StoredType>timestamp|0s</StoredType>
       <TypeId>1114</TypeId>
     </column>
@@ -4402,7 +4402,7 @@ default</CollationNames>
       <DefaultExpression>true</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>6</Position>
-      <StateNumber>742</StateNumber>
+      <StateNumber>756</StateNumber>
       <StoredType>boolean|0s</StoredType>
       <TypeId>16</TypeId>
     </column>
@@ -4410,23 +4410,23 @@ default</CollationNames>
       <DefaultExpression>2000</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>7</Position>
-      <StateNumber>742</StateNumber>
+      <StateNumber>756</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
     <index id="288" parent="266" name="users_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16409</ObjectId>
+      <ObjectId>16447</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>742</StateNumber>
+      <StateNumber>756</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <index id="289" parent="266" name="users_unique_email_idx">
       <ColNames>email</ColNames>
-      <ObjectId>16411</ObjectId>
-      <StateNumber>743</StateNumber>
+      <ObjectId>16449</ObjectId>
+      <StateNumber>757</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
@@ -4435,10 +4435,10 @@ default</CollationNames>
     </index>
     <key id="290" parent="266" name="users_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16410</ObjectId>
+      <ObjectId>16448</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>742</StateNumber>
-      <UnderlyingIndexId>16409</UnderlyingIndexId>
+      <StateNumber>756</StateNumber>
+      <UnderlyingIndexId>16447</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>

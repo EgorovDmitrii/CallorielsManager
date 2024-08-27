@@ -13,6 +13,7 @@ import ru.dmitrii_egorov.manager.util.SecurityUtil;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +23,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Objects;
 
+@WebServlet("/meals")
 public class MealServlet extends HttpServlet {
 
     private ConfigurableApplicationContext springContext;
@@ -29,7 +31,7 @@ public class MealServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        springContext = new ClassPathXmlApplicationContext("spring/spring-app.xml");
+        springContext = new ClassPathXmlApplicationContext("spring/spring-app.xml", "spring/spring-db.xml");
         this.mealService = springContext.getBean(MealService.class);
     }
 

@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-@Repository
+
 public class InMemoryMealRepository implements MealRepository {
 
     private final Map<Integer, Map<Integer, Meal>> repository = new ConcurrentHashMap<>();
